@@ -1,0 +1,1 @@
+# Inserções SQL nas tabelas geradas pelo Script SQL do Modelo Entidade-Relacionamento
