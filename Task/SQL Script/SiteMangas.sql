@@ -1,3 +1,10 @@
+CREATE TABLE SITUACAO(
+	ID INTEGER AUTO_INCREMENT,
+    Nome CHAR(20),
+    Imagem CHAR(50),
+    PRIMARY KEY(ID)
+);
+
 CREATE TABLE MANGA(
 	ID INTEGER AUTO_INCREMENT,
     Nome CHAR(50),
@@ -5,13 +12,6 @@ CREATE TABLE MANGA(
     ID_Situacao INTEGER NOT NULL,
     PRIMARY KEY(ID),
     FOREIGN KEY(ID_Situacao) REFERENCES SITUACAO(ID)
-);
-
-CREATE TABLE SITUACAO(
-	ID INTEGER AUTO_INCREMENT,
-    Nome CHAR(20),
-    Imagem CHAR(50),
-    PRIMARY KEY(ID)
 );
 
 CREATE TABLE AUTOR(
@@ -128,18 +128,32 @@ CREATE TABLE USUARIO_ACESSA_MANGA(
     FOREIGN KEY(ID_Nota) REFERENCES NOTA(ID)
 );
 
+CREATE TABLE AVALIACAO(
+	ID INTEGER AUTO_INCREMENT,
+    Like_ BOOLEAN,
+    Dislike BOOLEAN,
+    PRIMARY KEY(ID)
+);
+
 CREATE TABLE USUARIO_LE_CAPITULO(
 	ID_Usuario INTEGER,
     ID_Capitulo INTEGER,
+    ID_Avaliacao INTEGER,
     PRIMARY KEY(ID_Usuario, ID_Capitulo),
     FOREIGN KEY(ID_Usuario) REFERENCES USUARIO(ID),
-    FOREIGN KEY(ID_Capitulo) REFERENCES CAPITULO(ID)
+    FOREIGN KEY(ID_Capitulo) REFERENCES CAPITULO(ID),
+    FOREIGN KEY(ID_Avaliacao) REFERENCES AVALIACAO(ID)
 );
 
-# Falta as entidades fracas e revisar a implementação
+CREATE TABLE COMENTARIO(
+	ID INTEGER AUTO_INCREMENT,
+    Mensagem TEXT,
+    NumeroVotos INTEGER,
+    DataPublicacao DATE,
+    ID_Usuario_UsuarioLeCapitulo INTEGER,
+    ID_Capitulo_UsuarioLeCapitulo INTEGER,
+    PRIMARY KEY(ID, ID_Usuario_UsuarioLeCapitulo, ID_Capitulo_UsuarioLeCapitulo),
+    FOREIGN KEY(ID_Usuario_UsuarioLeCapitulo, ID_Capitulo_UsuarioLeCapitulo) REFERENCES USUARIO_LE_CAPITULO(ID_Usuario, ID_Capitulo) ON DELETE CASCADE
+);
 
-# Lembrar de mudar no ER Model: Adicionar entidade Situação 
-# (excluir atributo), mudar o nome da entidade Status para 
-# Estado, e colocar em Usuário, um ID como chave primária
-
-
+# Falta revisar a implementação
