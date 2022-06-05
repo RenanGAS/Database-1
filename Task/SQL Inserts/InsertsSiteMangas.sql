@@ -35,7 +35,7 @@ INSERT INTO MANGA(Nome, Imagem, ID_Situacao) VALUES('Naruto', 'narutoImg.png', 2
                                                     ('Shigatsu wa Kimi no Uso', 'shigatsuImg.png', 2), ('Vinland Saga', 'vinlandsagaImg.png', 1),
                                                     ('Full Metal Alchemist', 'fullmetalImg.png', 2), ('Tokyo Revengers', 'tokyorevengersImg.png', 1);
                                                     
-INSERT AUTOR(Nome, Nacionalidade) VALUES('Masashi Kishimoto', 'Japonês'), ('Eiichiro Oda', 'Japonês'), 
+INSERT INTO AUTOR(Nome, Nacionalidade) VALUES('Masashi Kishimoto', 'Japonês'), ('Eiichiro Oda', 'Japonês'), 
 					('Yoshihiro Togashi', 'Japonês'), ('Haruichi Furudate', 'Japonês'),
                                         ('One', 'Japonês'), ('Koyoharu Gotouge', 'Japonês'),
                                         ('Naoshi Arakawa', 'Japonês'), ('Makoto Yukimura', 'Japonês'),
