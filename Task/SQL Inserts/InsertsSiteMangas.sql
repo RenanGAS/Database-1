@@ -41,9 +41,12 @@ INSERT INTO AUTOR(Nome, Nacionalidade) VALUES('Masashi Kishimoto', 'Japonês'), 
                                         ('Naoshi Arakawa', 'Japonês'), ('Makoto Yukimura', 'Japonês'),
                                         ('Hiromu Arakawa', 'Japonês'), ('Ken Wakui', 'Japonês'),
                                         ('Marcelo Cassaro', 'Brasileiro'), ('Caio Yo', 'Brasileiro');
-
+                                        
+INSERT INTO AUTOR_TEM_MANGA(ID_Autor, ID_Manga, NumeroMangas) VALUES(1, 11, 7), (2, 12, 6), (3, 13, 5), (4, 14, 4), (5, 15, 9), (6, 16, 3), (7, 17, 2),
+								    (8, 18, 2), (9, 19, 7), (10, 20, 0);
+                                                                    
 # SELECT * FROM AUTOR; -------------------------
-# SELECT * FROM AUTOR_TEM_MANGA;
+# SELECT * FROM AUTOR_TEM_MANGA; ---------------
 # SELECT * FROM AVALIACAO; ---------------------
 # SELECT * FROM CAPITULO;
 # SELECT * FROM CATEGORIA; ---------------------
