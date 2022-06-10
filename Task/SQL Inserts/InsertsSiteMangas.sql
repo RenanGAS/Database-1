@@ -6,8 +6,7 @@ INSERT INTO CATEGORIA(Nome, Imagem) VALUES('Ação', 'actionLogo.png'), ('Artes 
                                           ('Esportes', 'sportsLogo.png'), ('Fantasia', 'fantasyLogo.png'),
                                           ('Magia', 'magicLogo.png'), ('Música', 'musicLogo.png');
 INSERT INTO ESTADO(Nome, Imagem) VALUES('Lendo', 'readingLogo.png'), ('Lerei', 'markedLogo.png'), 
-				       ('Lido', 'checkedLogo.png'), ('Parei', 'stoppedLogo.png'), 
-                                       ('Avaliei', 'classifiedLogo.png');
+				       ('Lido', 'checkedLogo.png'), ('Parei', 'stoppedLogo.png');
 
 INSERT INTO NOTA(Numero) VALUES(0), (1), (2), (3), (4), (5), (6),
 		               (7), (8), (9), (10);
@@ -53,24 +52,33 @@ INSERT INTO USUARIO_LE_CAPITULO(ID_Usuario, ID_Capitulo, ID_Avaliacao) VALUES(1,
 
 INSERT INTO COMENTARIO(Mensagem, NumeroVotos, DataPublicacao, ID_Usuario_UsuarioLeCapitulo, ID_Capitulo_UsuarioLeCapitulo) VALUES('Já assisti o anime, agr quero ver algumas diferenças que ele tem com o mangá e é claro, ver acompanhar desde o início.', 12, '2022-04-09', 2, 2), ('Finalmente comecei essa obra !! Pretendo ler pelo menos até sabaody .. acho que depois disso vou começar o anime tambem', 8, '2022-04-09', 3, 3), ('já vi o anime mas quando cheguei no 930 e alguma coisa cansei, decidi ler o mangá agora e começar do zero', 2, '2022-04-28', 4, 4), ('Aqui estou eu, dando o primeiro passo na tão falada e elogiada obra One Piece.', 20, '2022-05-02', 5, 5), ('Acho que sou um pirata se pá... Mas serio, esses primeiros caps coloridos tão bonitões', 15, '2022-04-09', 6, 6), ('Cara eu tbm tô mto ansioso mas eu quero ler o manga inteiro até chegar nos atuais', 3, '2022-05-07', 7, 7), ('O Luffy tem uma intuição do baralho... interessante ver que o Luffy já confiava na sua força desde os primeiros capítulos, quando a pessoa lê assim no começo pensa que arrogância mais depois descobre outras coisas que faz parecer mais legal, e o Zoro muito top como sempre.', 22, '2022-03-21', 8, 8), ('Onigiri hm? Me lembra de um certo ataque', 5, '2022-06-03', 9, 9), ('meta é chegar no mil ainda esse fim de semana, mas os deveres num deixa kkkkk', 1, '2022-03-04', 10, 10), ('Zoro sola', 1000, '2022-06-09', 1, 1);   
                                                                                                  
-INSERT INTO MANGA_PERTENCE_CATEGORIA(ID_Manga, ID_Categoria, NumeroMangas) VALUES(1, 1, 1), (1, 2, 1), (1, 3, 1), (2, 1, 2), (2, 3, 2), (2, 4, 1), (2, 8, 1), (3, 1, 3), (3, 3, 3), (3, 8, 2);                                                                                               
+INSERT INTO MANGA_PERTENCE_CATEGORIA(ID_Manga, ID_Categoria, NumeroMangas) VALUES(1, 1, 1), (1, 2, 1), (1, 3, 1), (2, 1, 2), (2, 3, 2), (2, 4, 1), (2, 8, 1), (3, 1, 3), (3, 3, 3), (3, 8, 2); 
 
-# SELECT * FROM AUTOR; -------------------------
-# SELECT * FROM AUTOR_TEM_MANGA; ---------------
-# SELECT * FROM AVALIACAO; ---------------------
-# SELECT * FROM CAPITULO; ----------------------
-# SELECT * FROM CATEGORIA; ---------------------
-# SELECT * FROM COMENTARIO; --------------------
-# SELECT * FROM ESTADO; ------------------------
-# SELECT * FROM MANGA; -------------------------
-# SELECT * FROM MANGA_PERTENCE_CATEGORIA; ------
-# SELECT * FROM NOTA; --------------------------
-# SELECT * FROM REDESOCIAL; --------------------
-# SELECT * FROM SCANLATOR; ---------------------
+INSERT INTO SCANLATOR_EDITA_MANGA(ID_Scanlator, ID_Manga, NumeroMangas) VALUES(1, 1, 1), (1, 2, 2), (1, 3, 3), (1, 4, 4), (2, 1, 1), (2, 2, 2), (2, 4, 3), (3, 3, 1), (3, 4, 2), (3, 5, 3);  
+
+INSERT INTO SCANLATOR_POSSUI_REDESOCIAL(ID_Scanlator, ID_RedeSocial) VALUES(1, 1), (1, 4), (2, 1), (2, 3), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 1), (5, 4);
+
+INSERT INTO SCANLATOR_TRADUZ_CAPITULO(ID_Scanlator, ID_Capitulo) VALUES(1, 1), (2, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 4), (2, 5), (1, 6), (1, 7), (1, 8), (1, 9), (1, 10);
+
+INSERT INTO USUARIO_ACESSA_MANGA(ID_Usuario, ID_Manga, ID_Estado, ID_Nota) VALUES(1, 2, 1, 11), (1, 1, 3, 11), (1, 3, 3, 11), (1, 10, 1, 11), (1, 7, 3, 11), (2, 5, 1, 11), (2, 7, 3, 10), (3, 2, 1, 11), (3, 3, 3, 10), (3, 5, 1, 10);
+
+
+# SELECT * FROM AUTOR;
+# SELECT * FROM AUTOR_TEM_MANGA;
+# SELECT * FROM AVALIACAO;
+# SELECT * FROM CAPITULO;
+# SELECT * FROM CATEGORIA;
+# SELECT * FROM COMENTARIO; 
+# SELECT * FROM ESTADO;
+# SELECT * FROM MANGA;
+# SELECT * FROM MANGA_PERTENCE_CATEGORIA;
+# SELECT * FROM NOTA; 
+# SELECT * FROM REDESOCIAL; 
+# SELECT * FROM SCANLATOR;
 # SELECT * FROM SCANLATOR_EDITA_MANGA;
-# SELECT * FROM SCANLATOR_POSSUI_REDESOCIAL;
-# SELECT * FROM SCANLATOR_TRADUZ_CAPITULO;
-# SELECT * FROM SITUACAO; ----------------------
-# SELECT * FROM USUARIO; -----------------------
+# SELECT * FROM SCANLATOR_POSSUI_REDESOCIAL; 
+# SELECT * FROM SCANLATOR_TRADUZ_CAPITULO; 
+# SELECT * FROM SITUACAO;
+# SELECT * FROM USUARIO;
 # SELECT * FROM USUARIO_ACESSA_MANGA;
-# SELECT * FROM USUARIO_LE_CAPITULO; -----------
+# SELECT * FROM USUARIO_LE_CAPITULO;
