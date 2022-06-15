@@ -142,10 +142,10 @@ CREATE TABLE AVALIACAO(
 );
 
 CREATE TABLE USUARIO_LE_CAPITULO(
-    ID_Usuario INTEGER,
     ID_Capitulo INTEGER,
+    ID_Usuario INTEGER,
     ID_Avaliacao INTEGER,
-    PRIMARY KEY(ID_Usuario, ID_Capitulo),
+    PRIMARY KEY(ID_Capitulo, ID_Usuario),
     FOREIGN KEY(ID_Usuario) REFERENCES USUARIO(ID),
     FOREIGN KEY(ID_Capitulo) REFERENCES CAPITULO(ID),
     FOREIGN KEY(ID_Avaliacao) REFERENCES AVALIACAO(ID)
@@ -156,8 +156,8 @@ CREATE TABLE COMENTARIO(
     Mensagem TEXT,
     NumeroVotos INTEGER,
     DataPublicacao DATE,
+	ID_Capitulo_UsuarioLeCapitulo INTEGER,
     ID_Usuario_UsuarioLeCapitulo INTEGER,
-    ID_Capitulo_UsuarioLeCapitulo INTEGER,
-    PRIMARY KEY(ID, ID_Usuario_UsuarioLeCapitulo, ID_Capitulo_UsuarioLeCapitulo),
-    FOREIGN KEY(ID_Usuario_UsuarioLeCapitulo, ID_Capitulo_UsuarioLeCapitulo) REFERENCES USUARIO_LE_CAPITULO(ID_Usuario, ID_Capitulo) ON DELETE CASCADE
+    PRIMARY KEY(ID, ID_Capitulo_UsuarioLeCapitulo, ID_Usuario_UsuarioLeCapitulo),
+    FOREIGN KEY(ID_Capitulo_UsuarioLeCapitulo, ID_Usuario_UsuarioLeCapitulo) REFERENCES USUARIO_LE_CAPITULO(ID_Capitulo, ID_Usuario) ON DELETE CASCADE
 );
