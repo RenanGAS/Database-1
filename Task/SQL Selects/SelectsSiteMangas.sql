@@ -6,6 +6,6 @@ SELECT A.Nome FROM AUTOR A, AUTOR_TEM_MANGA ATM WHERE A.ID = ATM.ID_Autor AND AT
 
 SELECT DISTINCT U.Email FROM USUARIO U, USUARIO_LE_CAPITULO ULC WHERE U.ID = ULC.ID_Usuario AND EXISTS(SELECT * FROM COMENTARIO C WHERE C.ID_Usuario_UsuarioLeCapitulo = ULC.ID_Usuario AND C.NumeroVotos > 10);
 
-# Seleciona a quantidade de likes em cada capítulo do mangá "One Piece"
+# Seleciona a quantidade de likes em cada capítulo do mangá 'One Piece'
 
 SELECT ID_Capitulo, COUNT(ID_Usuario) AS QTDE FROM USUARIO_LE_CAPITULO WHERE ID_Avaliacao = 1 GROUP BY ID_Capitulo;
