@@ -23,15 +23,21 @@ SELECT ID_Scanlator, ID_Capitulo FROM SCANLATOR_TRADUZ_CAPITULO STC, SCANLATOR S
 SELECT T1.ID_MANGA, AVG(T1.Numero) AS NotaMedia FROM (
 SELECT UAM.ID_Manga, N.Numero FROM USUARIO_ACESSA_MANGA UAM, MANGA M, NOTA N WHERE UAM.ID_Manga = M.ID AND M.Nome = 'One Piece' AND UAM.ID_Nota = N.ID GROUP BY ID_Manga, ID_Usuario) AS T1 GROUP BY T1.ID_Manga;
 
-# Seleciona o ID e número de capítulos do mangá "One Piece" ### Inválido
+# Seleciona o ID e o número de likes e dislikes do capítulo "Uzumaki Naruto"
 
-SELECT C.ID_MANGA, COUNT(*) AS NumeroCapitulos FROM CAPITULO C, MANGA M WHERE C.ID_MANGA = M.ID AND M.Nome = 'One Piece' GROUP BY C.ID_Manga;
+SELECT ID, TL.NLikes, TD.NDislikes FROM (
+SELECT ID_Capitulo, COUNT(*) AS NLikes FROM USUARIO_LE_CAPITULO WHERE ID_Avaliacao = 1 GROUP BY ID_Capitulo) AS TL, 
+(SELECT ID_Capitulo, COUNT(*) AS NDislikes FROM USUARIO_LE_CAPITULO WHERE ID_Avaliacao = 2 GROUP BY ID_Capitulo) AS TD, CAPITULO C WHERE C.ID = TL.ID_Capitulo AND C.ID = TD.ID_Capitulo AND C.Titulo = 'Uzumaki Naruto';
 
-# Seleciona o ID e o número de likes e dislikes do capítulo "Uzumaki Naruto" do mangá "Naruto"
+# Seleciona os Emails dos usuários que já terminaram 2 ou mais mangás
 
-# Seleciona os Emails dos usuário que já terminaram mais de 2 mangás
+SELECT U.Email FROM USUARIO U WHERE 2 <= (SELECT COUNT(*) FROM USUARIO_ACESSA_MANGA UAM WHERE U.ID = UAM.ID_Usuario AND UAM.ID_Estado = 3);
 
-# Seleciona a categoria de mangá mais acessada
+# Seleciona a(s) categoria(s) de mangá(s) mais acessada(s)
+
+SELECT * FROM CATEGORIA WHERE ID IN(
+SELECT MPC.ID_Categoria FROM USUARIO_ACESSA_MANGA UAM, MANGA_PERTENCE_CATEGORIA MPC WHERE UAM.ID_Manga = MPC.ID_Manga GROUP BY MPC.ID_Categoria HAVING(COUNT(*) >= ALL(
+SELECT COUNT(*) FROM USUARIO_ACESSA_MANGA UAM, MANGA_PERTENCE_CATEGORIA MPC WHERE UAM.ID_Manga = MPC.ID_Manga GROUP BY MPC.ID_Categoria)));
 
 # Seleciona o mangá com mais comentários
 
